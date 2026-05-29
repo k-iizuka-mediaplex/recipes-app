@@ -2,30 +2,412 @@
 
 namespace Database\Seeders;
 
-
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 class MaterialsTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        DB::table('materials')->insert(
-            [
-                ['name' => '豚肉', 'genre_id' => 4],
-                ['name' => '玉ねぎ', 'genre_id' => 6],
-                ['name' => 'にんじん', 'genre_id' => 6],
-                ['name' => 'なす', 'genre_id' => 6],
-                ['name' => 'キャベツ', 'genre_id' => 6],
-                ['name' => 'ピーマン', 'genre_id' => 6],
-                ['name' => 'じゃがいも', 'genre_id' => 6],
-                ['name' => 'カレールー', 'genre_id' => 14],
-                ['name' => 'シチュールー', 'genre_id' => 14]
-            ]
-        );
+        $materials = [
+            // ==========================================
+            // genre_id: 1 - 米・雑穀・シリアル (14品)
+            // ==========================================
+            ['name' => '白米',             'genre_id' => 1],
+            ['name' => '玄米',             'genre_id' => 1],
+            ['name' => 'もち米',           'genre_id' => 1],
+            ['name' => 'オートミール',     'genre_id' => 1],
+            ['name' => 'コーンフレーク',   'genre_id' => 1],
+            ['name' => 'グラノーラ',       'genre_id' => 1],
+            ['name' => '雑穀米',           'genre_id' => 1],
+            ['name' => '押し麦',           'genre_id' => 1],
+            ['name' => 'キヌア',           'genre_id' => 1],
+            ['name' => 'アマランサス',     'genre_id' => 1],
+            ['name' => '発芽玄米',         'genre_id' => 1],
+            ['name' => '赤米',             'genre_id' => 1],
+            ['name' => '黒米',             'genre_id' => 1],
+            ['name' => 'タピオカ',         'genre_id' => 1],
+
+            // ==========================================
+            // genre_id: 2 - 麺類 (14品)
+            // ==========================================
+            ['name' => 'うどん',           'genre_id' => 2],
+            ['name' => 'そば',             'genre_id' => 2],
+            ['name' => 'そうめん',         'genre_id' => 2],
+            ['name' => 'ひやむぎ',         'genre_id' => 2],
+            ['name' => 'スパゲッティ',     'genre_id' => 2],
+            ['name' => 'ペンネ',           'genre_id' => 2],
+            ['name' => 'フェットチーネ',   'genre_id' => 2],
+            ['name' => '中華麺',           'genre_id' => 2],
+            ['name' => 'フォー',           'genre_id' => 2],
+            ['name' => 'ビーフン',         'genre_id' => 2],
+            ['name' => '春雨',             'genre_id' => 2],
+            ['name' => 'ラーメン麺',       'genre_id' => 2],
+            ['name' => 'マカロニ',         'genre_id' => 2],
+            ['name' => 'リングイネ',       'genre_id' => 2],
+
+            // ==========================================
+            // genre_id: 3 - パン (10品)
+            // ==========================================
+            ['name' => '食パン',           'genre_id' => 3],
+            ['name' => 'バゲット',         'genre_id' => 3],
+            ['name' => 'クロワッサン',     'genre_id' => 3],
+            ['name' => 'イングリッシュマフィン', 'genre_id' => 3],
+            ['name' => 'ベーグル',         'genre_id' => 3],
+            ['name' => 'ライ麦パン',       'genre_id' => 3],
+            ['name' => 'ナン',             'genre_id' => 3],
+            ['name' => 'ピタパン',         'genre_id' => 3],
+            ['name' => 'フォカッチャ',     'genre_id' => 3],
+            ['name' => 'パン粉',           'genre_id' => 3],
+
+            // ==========================================
+            // genre_id: 4 - お肉・肉加工品 (30品)
+            // ==========================================
+            ['name' => '豚肉（薄切り）',   'genre_id' => 4],
+            ['name' => '豚バラ肉',         'genre_id' => 4],
+            ['name' => '豚ロース',         'genre_id' => 4],
+            ['name' => '豚こま切れ肉',     'genre_id' => 4],
+            ['name' => '豚ひき肉',         'genre_id' => 4],
+            ['name' => '豚肩ロース',       'genre_id' => 4],
+            ['name' => '豚レバー',         'genre_id' => 4],
+            ['name' => '鶏むね肉',         'genre_id' => 4],
+            ['name' => '鶏もも肉',         'genre_id' => 4],
+            ['name' => '鶏手羽元',         'genre_id' => 4],
+            ['name' => '鶏手羽先',         'genre_id' => 4],
+            ['name' => '鶏ささみ',         'genre_id' => 4],
+            ['name' => '鶏ひき肉',         'genre_id' => 4],
+            ['name' => '鶏軟骨',           'genre_id' => 4],
+            ['name' => '牛切り落とし肉',   'genre_id' => 4],
+            ['name' => '牛バラ肉',         'genre_id' => 4],
+            ['name' => '牛ロース',         'genre_id' => 4],
+            ['name' => '牛ひき肉',         'genre_id' => 4],
+            ['name' => '合いびき肉',       'genre_id' => 4],
+            ['name' => 'ラム肉',           'genre_id' => 4],
+            ['name' => 'ベーコン',         'genre_id' => 4],
+            ['name' => 'ハム',             'genre_id' => 4],
+            ['name' => 'ソーセージ',       'genre_id' => 4],
+            ['name' => 'ウィンナー',       'genre_id' => 4],
+            ['name' => 'サラミ',           'genre_id' => 4],
+            ['name' => '焼き豚（チャーシュー）', 'genre_id' => 4],
+            ['name' => 'ペパロニ',         'genre_id' => 4],
+            ['name' => 'コンビーフ',       'genre_id' => 4],
+            ['name' => 'スパム（ランチョンミート）', 'genre_id' => 4],
+            ['name' => 'プロシュート',     'genre_id' => 4],
+
+            // ==========================================
+            // genre_id: 5 - 魚介・水産加工品 (30品)
+            // ==========================================
+            ['name' => 'サーモン',         'genre_id' => 5],
+            ['name' => 'マグロ',           'genre_id' => 5],
+            ['name' => 'タラ',             'genre_id' => 5],
+            ['name' => 'アジ',             'genre_id' => 5],
+            ['name' => 'サバ',             'genre_id' => 5],
+            ['name' => 'イワシ',           'genre_id' => 5],
+            ['name' => 'サンマ',           'genre_id' => 5],
+            ['name' => 'ブリ',             'genre_id' => 5],
+            ['name' => 'カツオ',           'genre_id' => 5],
+            ['name' => 'タイ',             'genre_id' => 5],
+            ['name' => 'ヒラメ',           'genre_id' => 5],
+            ['name' => 'カレイ',           'genre_id' => 5],
+            ['name' => 'エビ',             'genre_id' => 5],
+            ['name' => 'カニ',             'genre_id' => 5],
+            ['name' => 'イカ',             'genre_id' => 5],
+            ['name' => 'タコ',             'genre_id' => 5],
+            ['name' => 'ホタテ',           'genre_id' => 5],
+            ['name' => 'アサリ',           'genre_id' => 5],
+            ['name' => 'シジミ',           'genre_id' => 5],
+            ['name' => 'ムール貝',         'genre_id' => 5],
+            ['name' => 'カキ（牡蠣）',     'genre_id' => 5],
+            ['name' => 'ちくわ',           'genre_id' => 5],
+            ['name' => 'かまぼこ',         'genre_id' => 5],
+            ['name' => 'はんぺん',         'genre_id' => 5],
+            ['name' => 'さつま揚げ',       'genre_id' => 5],
+            ['name' => '明太子',           'genre_id' => 5],
+            ['name' => 'たらこ',           'genre_id' => 5],
+            ['name' => 'かに風味かまぼこ', 'genre_id' => 5],
+            ['name' => 'スモークサーモン', 'genre_id' => 5],
+            ['name' => 'ししゃも',         'genre_id' => 5],
+
+            // ==========================================
+            // genre_id: 6 - 野菜 (60品)
+            // ==========================================
+            ['name' => '玉ねぎ',           'genre_id' => 6],
+            ['name' => 'にんじん',         'genre_id' => 6],
+            ['name' => 'なす',             'genre_id' => 6],
+            ['name' => 'キャベツ',         'genre_id' => 6],
+            ['name' => 'ピーマン',         'genre_id' => 6],
+            ['name' => 'じゃがいも',       'genre_id' => 6],
+            ['name' => 'トマト',           'genre_id' => 6],
+            ['name' => 'ミニトマト',       'genre_id' => 6],
+            ['name' => 'きゅうり',         'genre_id' => 6],
+            ['name' => '大根',             'genre_id' => 6],
+            ['name' => 'ほうれん草',       'genre_id' => 6],
+            ['name' => '小松菜',           'genre_id' => 6],
+            ['name' => '白菜',             'genre_id' => 6],
+            ['name' => 'ブロッコリー',     'genre_id' => 6],
+            ['name' => 'カリフラワー',     'genre_id' => 6],
+            ['name' => 'ズッキーニ',       'genre_id' => 6],
+            ['name' => 'かぼちゃ',         'genre_id' => 6],
+            ['name' => 'さつまいも',       'genre_id' => 6],
+            ['name' => 'ごぼう',           'genre_id' => 6],
+            ['name' => 'れんこん',         'genre_id' => 6],
+            ['name' => '長ねぎ',           'genre_id' => 6],
+            ['name' => '小ねぎ',           'genre_id' => 6],
+            ['name' => 'にら',             'genre_id' => 6],
+            ['name' => 'もやし',           'genre_id' => 6],
+            ['name' => '豆苗',             'genre_id' => 6],
+            ['name' => 'セロリ',           'genre_id' => 6],
+            ['name' => 'アスパラガス',     'genre_id' => 6],
+            ['name' => 'スナップエンドウ', 'genre_id' => 6],
+            ['name' => 'さやいんげん',     'genre_id' => 6],
+            ['name' => 'とうもろこし',     'genre_id' => 6],
+            ['name' => 'パプリカ（赤）',   'genre_id' => 6],
+            ['name' => 'パプリカ（黄）',   'genre_id' => 6],
+            ['name' => 'オクラ',           'genre_id' => 6],
+            ['name' => 'にんにく',         'genre_id' => 6],
+            ['name' => '生姜',             'genre_id' => 6],
+            ['name' => '長芋',             'genre_id' => 6],
+            ['name' => 'かぶ',             'genre_id' => 6],
+            ['name' => 'チンゲン菜',       'genre_id' => 6],
+            ['name' => '水菜',             'genre_id' => 6],
+            ['name' => 'ルッコラ',         'genre_id' => 6],
+            ['name' => 'レタス',           'genre_id' => 6],
+            ['name' => 'サニーレタス',     'genre_id' => 6],
+            ['name' => 'きゅうり',         'genre_id' => 6],
+            ['name' => 'ラディッシュ',     'genre_id' => 6],
+            ['name' => 'みょうが',         'genre_id' => 6],
+            ['name' => '大葉（しそ）',     'genre_id' => 6],
+            ['name' => 'バジル',           'genre_id' => 6],
+            ['name' => 'パセリ',           'genre_id' => 6],
+            ['name' => 'ミント',           'genre_id' => 6],
+            ['name' => 'コリアンダー（パクチー）', 'genre_id' => 6],
+            ['name' => 'ローズマリー',     'genre_id' => 6],
+            ['name' => 'タイム',           'genre_id' => 6],
+            ['name' => 'ディル',           'genre_id' => 6],
+            ['name' => 'とうがらし（生）', 'genre_id' => 6],
+            ['name' => 'アボカド',         'genre_id' => 6],
+            ['name' => 'えだまめ',         'genre_id' => 6],
+            ['name' => 'スプラウト',       'genre_id' => 6],
+            ['name' => 'ケール',           'genre_id' => 6],
+            ['name' => 'ビーツ',           'genre_id' => 6],
+            ['name' => 'フェンネル',       'genre_id' => 6],
+
+            // ==========================================
+            // genre_id: 7 - 果物 (16品)
+            // ==========================================
+            ['name' => 'りんご',           'genre_id' => 7],
+            ['name' => 'バナナ',           'genre_id' => 7],
+            ['name' => 'オレンジ',         'genre_id' => 7],
+            ['name' => 'レモン',           'genre_id' => 7],
+            ['name' => 'ライム',           'genre_id' => 7],
+            ['name' => 'いちご',           'genre_id' => 7],
+            ['name' => 'ぶどう',           'genre_id' => 7],
+            ['name' => '桃',               'genre_id' => 7],
+            ['name' => 'マンゴー',         'genre_id' => 7],
+            ['name' => 'パイナップル',     'genre_id' => 7],
+            ['name' => 'キウイ',           'genre_id' => 7],
+            ['name' => 'メロン',           'genre_id' => 7],
+            ['name' => 'すいか',           'genre_id' => 7],
+            ['name' => 'なし',             'genre_id' => 7],
+            ['name' => 'ブルーベリー',     'genre_id' => 7],
+            ['name' => 'クランベリー',     'genre_id' => 7],
+
+            // ==========================================
+            // genre_id: 8 - 卵・チーズ・乳製品 (18品)
+            // ==========================================
+            ['name' => '卵',               'genre_id' => 8],
+            ['name' => 'うずらの卵',       'genre_id' => 8],
+            ['name' => '牛乳',             'genre_id' => 8],
+            ['name' => '豆乳',             'genre_id' => 8],
+            ['name' => '生クリーム',       'genre_id' => 8],
+            ['name' => 'サワークリーム',   'genre_id' => 8],
+            ['name' => 'バター',           'genre_id' => 8],
+            ['name' => 'ヨーグルト',       'genre_id' => 8],
+            ['name' => 'クリームチーズ',   'genre_id' => 8],
+            ['name' => 'モッツァレラチーズ', 'genre_id' => 8],
+            ['name' => 'パルメザンチーズ', 'genre_id' => 8],
+            ['name' => 'ゴルゴンゾーラチーズ', 'genre_id' => 8],
+            ['name' => 'カマンベールチーズ', 'genre_id' => 8],
+            ['name' => 'チェダーチーズ',   'genre_id' => 8],
+            ['name' => 'スライスチーズ',   'genre_id' => 8],
+            ['name' => 'ピザ用チーズ',     'genre_id' => 8],
+            ['name' => 'コンデンスミルク', 'genre_id' => 8],
+            ['name' => 'スキムミルク',     'genre_id' => 8],
+
+            // ==========================================
+            // genre_id: 9 - 豆腐・納豆・大豆加工品 (12品)
+            // ==========================================
+            ['name' => '木綿豆腐',         'genre_id' => 9],
+            ['name' => '絹ごし豆腐',       'genre_id' => 9],
+            ['name' => '厚揚げ',           'genre_id' => 9],
+            ['name' => '油揚げ',           'genre_id' => 9],
+            ['name' => '高野豆腐',         'genre_id' => 9],
+            ['name' => '納豆',             'genre_id' => 9],
+            ['name' => '豆乳（無調整）',   'genre_id' => 9],
+            ['name' => '味噌',             'genre_id' => 9],
+            ['name' => 'おから',           'genre_id' => 9],
+            ['name' => 'ゆば',             'genre_id' => 9],
+            ['name' => '大豆（水煮）',     'genre_id' => 9],
+            ['name' => 'テンペ',           'genre_id' => 9],
+
+            // ==========================================
+            // genre_id: 10 - きのこ・海藻類 (18品)
+            // ==========================================
+            ['name' => 'しいたけ',         'genre_id' => 10],
+            ['name' => 'しめじ',           'genre_id' => 10],
+            ['name' => 'えのき',           'genre_id' => 10],
+            ['name' => 'まいたけ',         'genre_id' => 10],
+            ['name' => 'エリンギ',         'genre_id' => 10],
+            ['name' => 'なめこ',           'genre_id' => 10],
+            ['name' => 'マッシュルーム',   'genre_id' => 10],
+            ['name' => 'ポルチーニ（乾燥）', 'genre_id' => 10],
+            ['name' => 'トリュフ',         'genre_id' => 10],
+            ['name' => 'わかめ',           'genre_id' => 10],
+            ['name' => '昆布',             'genre_id' => 10],
+            ['name' => 'のり（海苔）',     'genre_id' => 10],
+            ['name' => 'めかぶ',           'genre_id' => 10],
+            ['name' => 'もずく',           'genre_id' => 10],
+            ['name' => 'ひじき',           'genre_id' => 10],
+            ['name' => 'あおさ',           'genre_id' => 10],
+            ['name' => 'とろろ昆布',       'genre_id' => 10],
+            ['name' => '寒天',             'genre_id' => 10],
+
+            // ==========================================
+            // genre_id: 11 - 粉類・製菓材料 (18品)
+            // ==========================================
+            ['name' => '薄力粉',           'genre_id' => 11],
+            ['name' => '強力粉',           'genre_id' => 11],
+            ['name' => '中力粉',           'genre_id' => 11],
+            ['name' => '片栗粉',           'genre_id' => 11],
+            ['name' => 'コーンスターチ',   'genre_id' => 11],
+            ['name' => 'ベーキングパウダー', 'genre_id' => 11],
+            ['name' => '重曹',             'genre_id' => 11],
+            ['name' => '上白糖',           'genre_id' => 11],
+            ['name' => 'グラニュー糖',     'genre_id' => 11],
+            ['name' => '三温糖',           'genre_id' => 11],
+            ['name' => 'てんさい糖',       'genre_id' => 11],
+            ['name' => 'はちみつ',         'genre_id' => 11],
+            ['name' => 'メープルシロップ', 'genre_id' => 11],
+            ['name' => 'ドライイースト',   'genre_id' => 11],
+            ['name' => 'ゼラチン',         'genre_id' => 11],
+            ['name' => 'ココアパウダー',   'genre_id' => 11],
+            ['name' => 'アーモンドプードル', 'genre_id' => 11],
+            ['name' => 'バニラエッセンス', 'genre_id' => 11],
+
+            // ==========================================
+            // genre_id: 12 - 乾物・乾燥食品 (16品)
+            // ==========================================
+            ['name' => '干ししいたけ',     'genre_id' => 12],
+            ['name' => '切り干し大根',     'genre_id' => 12],
+            ['name' => '高野豆腐（乾燥）', 'genre_id' => 12],
+            ['name' => '干し桜エビ',       'genre_id' => 12],
+            ['name' => 'かつお節',         'genre_id' => 12],
+            ['name' => '煮干し',           'genre_id' => 12],
+            ['name' => '干しひじき',       'genre_id' => 12],
+            ['name' => '乾燥わかめ',       'genre_id' => 12],
+            ['name' => '干し湯葉',         'genre_id' => 12],
+            ['name' => '乾燥レンズ豆',     'genre_id' => 12],
+            ['name' => '乾燥ひよこ豆',     'genre_id' => 12],
+            ['name' => '乾燥大豆',         'genre_id' => 12],
+            ['name' => '乾燥黒豆',         'genre_id' => 12],
+            ['name' => '干しエビ',         'genre_id' => 12],
+            ['name' => '乾燥パスタ（ショート）', 'genre_id' => 12],
+            ['name' => 'くるみ',           'genre_id' => 12],
+
+            // ==========================================
+            // genre_id: 13 - 缶詰・瓶詰 (14品)
+            // ==========================================
+            ['name' => 'ツナ缶',           'genre_id' => 13],
+            ['name' => 'さば缶（水煮）',   'genre_id' => 13],
+            ['name' => 'さんま缶',         'genre_id' => 13],
+            ['name' => 'コーン缶',         'genre_id' => 13],
+            ['name' => 'トマト缶（ホール）', 'genre_id' => 13],
+            ['name' => 'トマト缶（カット）', 'genre_id' => 13],
+            ['name' => 'ひよこ豆缶',       'genre_id' => 13],
+            ['name' => '大豆缶',           'genre_id' => 13],
+            ['name' => 'キドニービーンズ缶', 'genre_id' => 13],
+            ['name' => 'アンチョビ缶',     'genre_id' => 13],
+            ['name' => 'オリーブ（瓶）',   'genre_id' => 13],
+            ['name' => 'ケイパー（瓶）',   'genre_id' => 13],
+            ['name' => 'ミックスベジタブル（冷凍）', 'genre_id' => 13],
+            ['name' => 'クラムチャウダー缶', 'genre_id' => 13],
+
+            // ==========================================
+            // genre_id: 14 - 調味料・ソース類 (40品)
+            // ==========================================
+            ['name' => '醤油',             'genre_id' => 14],
+            ['name' => 'みりん',           'genre_id' => 14],
+            ['name' => '料理酒',           'genre_id' => 14],
+            ['name' => '酢',               'genre_id' => 14],
+            ['name' => '塩',               'genre_id' => 14],
+            ['name' => '黒胡椒',           'genre_id' => 14],
+            ['name' => '白胡椒',           'genre_id' => 14],
+            ['name' => 'カレー粉',         'genre_id' => 14],
+            ['name' => 'カレールー',       'genre_id' => 14],
+            ['name' => 'シチュールー',     'genre_id' => 14],
+            ['name' => 'めんつゆ',         'genre_id' => 14],
+            ['name' => 'だし（顆粒）',     'genre_id' => 14],
+            ['name' => 'コンソメ（顆粒）', 'genre_id' => 14],
+            ['name' => '鶏がらスープの素', 'genre_id' => 14],
+            ['name' => '豆板醤',           'genre_id' => 14],
+            ['name' => '甜面醤',           'genre_id' => 14],
+            ['name' => 'オイスターソース', 'genre_id' => 14],
+            ['name' => 'ナンプラー',       'genre_id' => 14],
+            ['name' => 'スイートチリソース', 'genre_id' => 14],
+            ['name' => 'トムヤムペースト', 'genre_id' => 14],
+            ['name' => 'ケチャップ',       'genre_id' => 14],
+            ['name' => 'マヨネーズ',       'genre_id' => 14],
+            ['name' => 'ウスターソース',   'genre_id' => 14],
+            ['name' => '中濃ソース',       'genre_id' => 14],
+            ['name' => 'ポン酢',           'genre_id' => 14],
+            ['name' => 'ごまだれ',         'genre_id' => 14],
+            ['name' => '白みそ',           'genre_id' => 14],
+            ['name' => '赤みそ',           'genre_id' => 14],
+            ['name' => 'すりごま（白）',   'genre_id' => 14],
+            ['name' => 'すりごま（黒）',   'genre_id' => 14],
+            ['name' => 'ごま油',           'genre_id' => 14],
+            ['name' => 'マスタード（粒）', 'genre_id' => 14],
+            ['name' => 'マスタード（粉）', 'genre_id' => 14],
+            ['name' => 'バルサミコ酢',     'genre_id' => 14],
+            ['name' => 'ポン酢しょうゆ',   'genre_id' => 14],
+            ['name' => 'タバスコ',         'genre_id' => 14],
+            ['name' => 'ラー油',           'genre_id' => 14],
+            ['name' => 'XO醤',             'genre_id' => 14],
+            ['name' => 'コチュジャン',     'genre_id' => 14],
+            ['name' => 'テリヤキソース',   'genre_id' => 14],
+
+            // ==========================================
+            // genre_id: 15 - 油脂類 (10品)
+            // ==========================================
+            ['name' => 'サラダ油',         'genre_id' => 15],
+            ['name' => 'オリーブオイル',   'genre_id' => 15],
+            ['name' => 'ごま油',           'genre_id' => 15],
+            ['name' => 'バター（食塩なし）', 'genre_id' => 15],
+            ['name' => 'マーガリン',       'genre_id' => 15],
+            ['name' => 'ラード',           'genre_id' => 15],
+            ['name' => 'ショートニング',   'genre_id' => 15],
+            ['name' => 'ごま油（焙煎）',   'genre_id' => 15],
+            ['name' => 'アボカドオイル',   'genre_id' => 15],
+            ['name' => 'ココナッツオイル', 'genre_id' => 15],
+
+            // ==========================================
+            // genre_id: 16 - 水・酒・飲料 (12品)
+            // ==========================================
+            ['name' => '水',               'genre_id' => 16],
+            ['name' => '日本酒',           'genre_id' => 16],
+            ['name' => '白ワイン',         'genre_id' => 16],
+            ['name' => '赤ワイン',         'genre_id' => 16],
+            ['name' => 'みりん（本みりん）', 'genre_id' => 16],
+            ['name' => 'ビール',           'genre_id' => 16],
+            ['name' => '豆乳（飲料）',     'genre_id' => 16],
+            ['name' => 'コーヒー',         'genre_id' => 16],
+            ['name' => '緑茶',             'genre_id' => 16],
+            ['name' => '昆布だし',         'genre_id' => 16],
+            ['name' => 'かつおだし',       'genre_id' => 16],
+            ['name' => '野菜ブロス',       'genre_id' => 16],
+        ];
+
+        DB::table('materials')->insert($materials);
     }
 }
