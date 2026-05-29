@@ -3,46 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>新規レシピの追加</title>
+  <title>新規レシピを投稿</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Noto Sans JP', 'sans-serif'],
+            display: ['Zen Kaku Gothic New', 'sans-serif'],
+          },
+          colors: {
+            cookpad: {
+              orange: '#FF6633',
+              'orange-light': '#FFF0EB',
+              'orange-hover': '#E55528',
+              cream: '#FFFBF7',
+              warm: '#FFF5EE',
+              'text-main': '#1A1A1A',
+              'text-sub': '#6B6B6B',
+              border: '#F0E8E0',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>body { background-color: #FFFBF7; }</style>
 </head>
-<body>
-  <h1>新規レシピの追加</h1>
-  <form action="{{ route('recipes.store') }}" method="POST">
-    @csrf
-    <label for="name">料理名:</label>
-    <input type="text" id="name" name="name" value="{{ old('name') }}" required><br><br>
+<body class="font-sans text-cookpad-text-main min-h-screen">
 
-    <label for="description">説明:</label><br>
-    <textarea id="description" name="description">{{ old('name') }}</textarea><br><br>
+  {{-- Header --}}
+  <header class="bg-white border-b border-cookpad-border sticky top-0 z-50 shadow-sm">
+    <div class="max-w-3xl mx-auto px-4 py-3 flex items-center gap-3">
+      <a href="{{ route('recipes.index') }}" class="text-cookpad-text-sub hover:text-cookpad-orange transition-colors text-sm">
+        ← レシピ一覧へ
+      </a>
+      <span class="text-cookpad-border">|</span>
+      <span class="font-display text-base font-bold text-cookpad-orange">🍳 新規レシピを投稿</span>
+    </div>
+  </header>
 
-    <label for="materials">材料:</label><br>
-    @foreach($genres as $genre)
-      <div>
-        <strong>【{{$genre->name}}】</strong>
+  {{-- Progress Bar Decoration --}}
+  <div class="h-1 bg-gradient-to-r from-cookpad-orange via-orange-400 to-yellow-300"></div>
+
+  <main class="max-w-3xl mx-auto px-4 py-8">
+
+    <div class="bg-white rounded-2xl border border-cookpad-border shadow-sm overflow-hidden">
+      <div class="bg-gradient-to-r from-cookpad-warm to-cookpad-orange-light px-6 py-5 border-b border-cookpad-border">
+        <h1 class="font-display text-2xl font-bold text-cookpad-text-main">新規レシピの追加</h1>
       </div>
-      @foreach ($genre->materials as $material)
-        <label bel for="material_{{ $material->id }}">
-          <input type="checkbox" id="material_{{ $material->id }}" name="materials[]" value="{{ $material->id }}"
-          {{ is_array(old('materials')) && in_array($material->id, old('materials')) ? 'checked' : '' }}>
-          {{ $material->name }}
-        </label>
-      @endforeach
-      <br>
-    @endforeach
 
-    <label for="new_material">新しい材料を追加:</label><br>
+      <form action="{{ route('recipes.store') }}" method="POST" class="p-6 space-y-6">
+        @csrf
 
-    <input type="text" id="new_material" name="new_material">
+        {{-- 料理名 --}}
+        <div>
+          <label for="name" class="block text-sm font-bold text-cookpad-text-main mb-1.5">
+            料理名 <span class="text-cookpad-orange">*</span>
+          </label>
+          <input type="text" id="name" name="name" value="{{ old('name') }}" required
+            placeholder="例：鶏むね肉のガーリックソテー"
+            class="w-full border border-cookpad-border rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-cookpad-orange focus:ring-2 focus:ring-cookpad-orange/20 transition-all placeholder-gray-300">
+        </div>
 
-    @error('new_material')
-      <p style="color: red;">{{ $message }}</p>
-    @enderror
-    <br><br>
+        {{-- 説明 --}}
+        <div>
+          <label for="description" class="block text-sm font-bold text-cookpad-text-main mb-1.5">
+            料理の説明
+          </label>
+          <textarea id="description" name="description" rows="4"
+            placeholder="どんな料理か、作り方や特徴などを書いてみましょう..."
+            class="w-full border border-cookpad-border rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-cookpad-orange focus:ring-2 focus:ring-cookpad-orange/20 transition-all resize-none placeholder-gray-300">{{ old('description') }}</textarea>
+        </div>
 
-    <button type="submit">レシピを保存</button>
-  </form>
-  <hr>
-    <a href="{{ route('recipes.index') }}">レシピ一覧へ戻る</a>
+        {{-- 材料 --}}
+        <div>
+          <p class="text-sm font-bold text-cookpad-text-main mb-3">材料を選ぶ</p>
+          <div class="space-y-4">
+            @foreach($genres as $genre)
+              <div class="bg-cookpad-warm rounded-xl p-4">
+                <p class="text-xs font-bold text-cookpad-orange uppercase tracking-wide mb-2">
+                  【{{ $genre->name }}】
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  @foreach ($genre->materials as $material)
+                    <label class="flex items-center gap-1.5 cursor-pointer group">
+                      <input type="checkbox" id="material_{{ $material->id }}" name="materials[]" value="{{ $material->id }}"
+                        {{ is_array(old('materials')) && in_array($material->id, old('materials')) ? 'checked' : '' }}
+                        class="accent-cookpad-orange w-4 h-4 rounded cursor-pointer">
+                      <span class="text-sm text-cookpad-text-main group-hover:text-cookpad-orange transition-colors">
+                        {{ $material->name }}
+                      </span>
+                    </label>
+                  @endforeach
+                </div>
+              </div>
+            @endforeach
+          </div>
+        </div>
+
+        {{-- 新しい材料 --}}
+        <div class="bg-cookpad-orange-light rounded-xl p-4">
+          <label for="new_material" class="block text-sm font-bold text-cookpad-text-main mb-1.5">
+            ➕ 新しい材料を追加
+          </label>
+          <input type="text" id="new_material" name="new_material"
+            placeholder="リストにない材料を入力..."
+            class="w-full border border-cookpad-border rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-cookpad-orange focus:ring-2 focus:ring-cookpad-orange/20 bg-white transition-all placeholder-gray-300">
+          @error('new_material')
+            <p class="text-red-500 text-xs mt-1.5">⚠️ {{ $message }}</p>
+          @enderror
+        </div>
+
+        {{-- Submit --}}
+        <div class="pt-2">
+          <button type="submit"
+            class="w-full bg-cookpad-orange text-white font-bold py-3.5 rounded-xl hover:bg-cookpad-orange-hover active:scale-[0.99] transition-all text-sm shadow-md">
+            レシピを投稿する
+          </button>
+        </div>
+      </form>
+    </div>
+
+  </main>
 </body>
 </html>
