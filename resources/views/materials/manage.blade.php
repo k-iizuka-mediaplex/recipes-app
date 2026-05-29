@@ -52,7 +52,6 @@
     {{-- Flash Message --}}
     @if (session('alert_message'))
       <div class="bg-green-50 border border-green-200 text-green-700 rounded-xl px-5 py-3 flex items-center gap-2 text-sm">
-        <span>✅</span>
         <span>{{ session('alert_message') }}</span>
       </div>
     @endif
@@ -73,7 +72,7 @@
                 placeholder="例：にんじん"
                 class="w-full border border-cookpad-border rounded-xl px-3 py-2 text-sm focus:outline-none focus:border-cookpad-orange focus:ring-2 focus:ring-cookpad-orange/20 transition-all placeholder-gray-300">
               @error('name')
-                <p class="text-red-500 text-xs mt-1">⚠️ {{ $message }}</p>
+                <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
               @enderror
             </div>
             <div>
@@ -130,7 +129,7 @@
                         </label>
                         <a href="{{ route('materials.edit', $material->id) }}"
                           class="text-xs text-cookpad-text-sub hover:text-cookpad-orange transition-colors opacity-0 group-hover:opacity-100 ml-2">
-                          ✏️ 変更
+                          ✏️ 編集
                         </a>
                       </li>
                     @endforeach

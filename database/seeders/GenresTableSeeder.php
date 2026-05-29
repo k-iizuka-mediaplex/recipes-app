@@ -27,6 +27,7 @@ class GenresTableSeeder extends Seeder
             ['id' => 14, 'name' => '調味料・ソース類'],
             ['id' => 15, 'name' => '油脂類'],
             ['id' => 16, 'name' => '水・酒・飲料'],
+            ['id' => 17, 'name' => '未分類'],
         ];
 
         foreach ($genres as $genre) {

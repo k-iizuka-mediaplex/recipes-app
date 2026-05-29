@@ -50,7 +50,7 @@ class RecipeController extends Controller
                     if (!$material) {
                         $material = Material::create([
                             'name' => $name,
-                            'genre_id' => 16
+                            'genre_id' => 17
                         ]);
                     }
 
@@ -103,7 +103,7 @@ class RecipeController extends Controller
                     if (!$material) {
                         $material = Material::create([
                             'name' => $name,
-                            'genre_id' => 16
+                            'genre_id' => 17
                         ]);
                     }
 
@@ -158,10 +158,11 @@ class RecipeController extends Controller
     public function updateMaterial(Request $request, string $id)
     {
         $request->validate([
-            'name' => 'required|string|max:50|regex:/^[a-zA-Z0-9ぁ-んァ-ヶー一-龠]+$/u',
+            'name' => 'required|string|max:50|regex:/^[a-zA-Z0-9ぁ-んァ-ヶー一-龠]+$/u|unique:materials,name,' . $id,
             'genre_id' => 'required|exists:genres,id',
         ], [
-            'name.regex' => '入力できない記号が含まれています'
+            'name.regex' => '入力できない記号が含まれています',
+            'name.unique' => 'その材料名はすでに登録されています。',
         ]);
 
         $material = Material::findOrFail($id);
